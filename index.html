@@ -1,29 +1,14 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>New Brain PE Synthetic Fixture</title>
-</head>
-<body>
-  <header>
-    <h1>PE Review Tracker — Synthetic Fixture</h1>
-    <p>Rehearsal data only. All projects, people, and status values are fictional.</p>
-  </header>
-  <main>
-    <table>
-      <thead>
-        <tr><th>Item</th><th>Summary</th><th>Status</th><th>Owner</th></tr>
-      </thead>
-      <tbody>
-        <tr data-item-id="PE-DEMO-001">
-          <td>PE-DEMO-001</td><td>Confirm sample handoff checklist</td><td>Needs review</td><td>Synthetic Owner A</td>
-        </tr>
-        <tr data-item-id="PE-DEMO-002">
-          <td>PE-DEMO-002</td><td>Review sample launch notes</td><td>In progress</td><td>Synthetic Owner B</td>
-        </tr>
-      </tbody>
-    </table>
-  </main>
-</body>
-</html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Synthetic PE Tracker</title></head><body><main><h1>Synthetic PE Tracker</h1><p>This test tracker is encrypted. Enter its pilot password to view it.</p><form id="unlock"><label>Password <input id="password" type="password" autocomplete="off" required></label><button type="submit">Unlock</button></form><p id="status" role="status"></p></main><script>const ENC={"salt": "Yrjsxg1k4QIDm6Fvh/G0yA==", "iv": "/qMgV5oVRkR8zs9e", "ct": "3UMVRfDn+WrGnUjNr3n5UHH2Y9WvawheX3tzC2G563/p++ievPgRJirRRGVvGdSPfatGsSSDE3isoVYk6OfEcRIXhjNY30LuB0ao0rIZj+6mGNYdT1/XQLkhZWCRiWNmsX98BfomcIJ6mP15Ay7CkPhuvU1EhaSdRMeGxEuFv+788qdPQnsCjnO9cPiDOir38ZU5fGCDOT8KCXwsveA8vmNuxojR4AanTKMMLD0UmT/yp+xbfn0yrsW8uuYla8xJj0KKijPxvLS4MBH88vDp0Y59IPuzFVPGH9pYC1tKH6tPwHuQRpwLpiPuwvqTkIB4KU1kJV4R88i4NxUVVYBNnTBOrSg4iTaCwoOIN0MQJeQ5BwnPFxXpI4YSg5t/DBXCLZ/AhaX0Qh48m6GT4yCda7BYuz+Gj0jOGEUsLNLNYbsjZPvzf9BKSHV9/swPKAL5ZBOzn7PICGlAr/OzsIbU7KqpVftDJH1uwy+jSaonNtVnCQOWhaoeGTuTUkGD8ovKTdM7me8WT/Ed6NBoNTYCETqYlDud/IVPdJcd6kiSGkbUdX1qUeiqHmTiZXxO0AxLZmvlHJVXUvFI6jlV9KGg0kzdyJ1qGDbKs3xRs8WWAAAMGt2cX1mMmvpq1pSr+gfeE8GWqn67eIvgDRz1MnuLKXT7h0lvIavFuxk8CEIT8x2IGlmrZLNLua0k5Pzp1HWYXo9jgfzCVVPFl0C5X5tdVNIxR1as9AGrZSavTnDuUkVs9zZLaQabnnlefVwEjBKaNX9Gy3M2Fuusm8pnu/Q3tGdT8ejAsMIuR3lQZon2j5+C87nOcP6dfvIqWZE0O8/bvP8RKYAgZcao+BnNKyZFAyFs0lS9SxtszNjpDVswe68ZVA7TlTcaPoHiuvmEW5TNWUOlhfu4UZFm9fkkkvjP4Wl0yizVYWA9hg0RIoGFt4ZfAauO5i9ybnVaRmgbN0chJi9zoweSZYASuao9Z+/knVhGVNJb2e8cf6ZG3ATktMNwmfOmLL1RZTvO7q788DuJePs/E1DMBhdshQXdBLp2yZ8s7ZIBeKmXa+vuIelHbgHH/A5wUoQ6rjhKtJRd2R8s2JGd6Qh8cWQ4TLJQq2lF6BDRMQ0fC1MHTyu0vvuf5+qPgrXtepPQYBzVcQpXVmQPVPY0/LR94AvTvxAwGnlcd+UkEc/ljbeCMjDYxZTcnkiS36qpZPdsyghCAFR9/ODHHRGodYdA0nGx4BhZRYvkOiBdwrQOBe2QpbjwLJ9fi3GDNPVSUf3pl1dACPL42NuWPUqvK0m8TSb/E4Ppr8ruBRbq04f5eYsh6wTsne/yuOTP+S3JpyzmgIXe7AWUTQliMREXVwJctsUayRlDH+IdiQQdY6S4BlQ+/zoy8A==", "iter": 150000};
+function bytes(text){return Uint8Array.from(atob(text),char=>char.charCodeAt(0))}
+document.getElementById('unlock').addEventListener('submit',async event=>{
+  event.preventDefault();
+  const status=document.getElementById('status');
+  try{
+    const password=document.getElementById('password').value;
+    const material=await crypto.subtle.importKey('raw',new TextEncoder().encode(password),'PBKDF2',false,['deriveKey']);
+    const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:bytes(ENC.salt),iterations:ENC.iter,hash:'SHA-256'},material,{name:'AES-GCM',length:256},false,['decrypt']);
+    const clear=await crypto.subtle.decrypt({name:'AES-GCM',iv:bytes(ENC.iv)},key,bytes(ENC.ct));
+    document.open();document.write(new TextDecoder().decode(clear));document.close();
+  }catch(_error){status.textContent='Unable to unlock this test tracker.'}
+});
+</script></body></html>
